@@ -11,6 +11,7 @@ public class OrderStore {
 
     static Clothing item1;
     static Clothing item2;
+    static int measurement = 3;
 
     private static void listaKikito() {
         List l = new ArrayList<String>();
@@ -44,9 +45,25 @@ public class OrderStore {
         s.status();
 
         Customer c1 = new Customer();
-        c1.name = "Cliente";
+        c1.name = "Pinky";
+        c1.size = "S";
         System.out.println("Customer: " + c1.name);
         System.out.println("Customer: ");
+        
+        switch (measurement) {
+            case 1, 2, 3:
+                c1.size = "S";
+                break;
+            case 4, 5, 6:
+                c1.size = "M";
+                break;
+            case 7, 8, 9:
+                c1.size = "L";
+                break;
+            default:
+                c1.size = "X";
+                break;
+        }
 
         listaKikito();
     }
