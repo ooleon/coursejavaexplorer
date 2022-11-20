@@ -13,14 +13,6 @@ public class OrderStore {
     static Clothing item2;
     static int measurement = 3;
 
-    private static void listaKikito() {
-        List l = new ArrayList<String>();
-        l.add("client");
-        l.add("1");
-        System.out.println("Lista: " + l.get(0));
-        Kikito k = new Kikito();
-    }
-
     public static void main(String[] args) {
         double tax = 0.2, total;
         System.out.println("Welcome to Duke OrderStore!");
@@ -35,25 +27,19 @@ public class OrderStore {
         item2.price = 10.5;
         item2.size = "S";
 
-        int cantidadItem1 = 1;
-        int cantidadItem2 = 2;
-        total = (item1.price * (1 + tax) * cantidadItem1) + (item2.price * (1 + tax) * cantidadItem2);
-
-        imprimitTotal(total);
-
-        Store s = new Store();
-        s.status();
+        Clothing[] items = {item1, item2};
 
         Customer c1 = new Customer();
         c1.name = "Pinky";
         c1.size = "S";
         System.out.println("Customer: " + c1.name);
         System.out.println("Customer: ");
-        
+
         switch (measurement) {
-            case 1, 2, 3:
+            case 1: case 2: case 3:
                 c1.size = "S";
                 break;
+
             case 4, 5, 6:
                 c1.size = "M";
                 break;
@@ -64,8 +50,12 @@ public class OrderStore {
                 c1.size = "X";
                 break;
         }
+        int cantidadItem1 = 1;
+        int cantidadItem2 = 2;
+        total = (item1.price * (1 + tax) * cantidadItem1) + (item2.price * (1 + tax) * cantidadItem2);
 
-        listaKikito();
+        imprimitTotal(total);
+
     }
 
     private static void imprimitTotal(double dtotal) {
