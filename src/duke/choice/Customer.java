@@ -1,8 +1,6 @@
 package duke.choice;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import duke.choice.Clothing;
 
 public class Customer {
 
@@ -23,13 +21,15 @@ public class Customer {
                 break;
             }
         }
-            System.out.println("\tTotal:\t\t" + total);
+            System.out.println("\tTotal:\t" + total);
         return total;
     }
 
     public void listItems() {
+        System.out.println("Lista de Items:"); 
         for (Clothing item : this.items) {
-            System.out.println("\t" + item.getDescription() + ", " + item.getPrice() + ", " + item.getPriceNeto() + ", " + item.getSize());
+//            System.out.println("\t" + item.getDescription() + ", " + item.getPrice() + ", " + item.getPriceNeto() + ", " + item.getSize());
+            System.out.println("\t" + item );
         }
     }
 

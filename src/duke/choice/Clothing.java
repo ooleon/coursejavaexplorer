@@ -4,17 +4,31 @@ package duke.choice;
  *
  * @author leo
  */
-public class Clothing {
+public class Clothing implements Comparable<Clothing>{
 
-    private final double MINIMUM_PRICE = 10.0;
-    private final double TAX = 0.2;
+    public final static double MINIMUM_PRICE = 10.0;
+    public final static double TAX = 0.2;
 
-    private String description;
+    public String description;
     private double price;
     private String size = "M";
 
     private static double tmp_price;
 
+    @Override
+    public int compareTo(Clothing c) {
+//        return this.description.compareTo(c.description);
+//          return this.size.compareTo(c.size);
+          return Double.compare(this.price, c.price) * -1;
+      }
+
+    
+
+    @Override
+    public String toString() {
+        return this.description +", "+ this.size +", Precio: "+ this.price +", Neto: "+ this.getPriceNeto();
+    }
+    
     public double getPriceNeto() {
         return this.price;
     }

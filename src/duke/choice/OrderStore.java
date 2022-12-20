@@ -6,6 +6,15 @@ import java.util.List;
 
 import duke.choice.Customer;
 import duke.choice.Kikito;
+import java.util.Arrays;
+
+import io.helidon.webserver.Routing;
+import io.helidon.webserver.ServerConfiguration;
+import io.helidon.webserver.WebServer;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class OrderStore {
 
@@ -14,9 +23,13 @@ public class OrderStore {
     static Clothing item3;
     static Clothing item4;
     static int measurement = 3;
+
     double price = 0.0;
+    static double average = 0.0;
+    static int counting = 0;
 
     public static void main(String[] args) {
+
         OrderStore os = new OrderStore();
         System.out.println("Welcome to Duke OrderStore!");
         Customer c1 = new Customer();
@@ -24,6 +37,8 @@ public class OrderStore {
         c1.setSize("S");
         c1.setSize(6);
         System.out.println("Customer: " + c1.getName() + ", " + c1.getSize() + ", ");
+        System.out.println("Minimum Price: " + Clothing.MINIMUM_PRICE);
+        System.out.println("Tax: " + Clothing.TAX);
 
         System.out.println("Clothing: ");
 
@@ -33,7 +48,7 @@ public class OrderStore {
         item4 = new Clothing();
         Clothing[] items1 = {item1};
         Clothing[] items2 = {item2};
-        Clothing[] items = {item3, item4};
+        Clothing[] items = {item3, item4, item1, item2};
 //        Clothing[] items = {item1, item2, item3, item4};
 
         item1.setDescription("Blue Jacket");
@@ -52,16 +67,62 @@ public class OrderStore {
         item4.setPrice(14.5);
         item4.setSize("M");
 
-
         int cantidadItem1 = 1;
         int cantidadItem2 = 2;
-        
-        c1.addItems(items);
-        System.out.println (c1.getItems().length);
-        c1.listItems();
-        System.out.println ();
-        c1.getTotalClothingCost();
 
-        
+        c1.addItems(items);
+        System.out.println(c1.getItems().length);
+        c1.listItems();
+        System.out.println();
+        c1.getTotalClothingCost();
+        /*
+         */
+        os.average(items);
+
+        Arrays.sort(c1.getItems());
+
+        c1.listItems();
+        try {
+            ItemList list = new ItemList(c1.getItems()[0].toString());
+            Routing routing = Routing.builder()
+                    .get("/items", list).build();
+            ServerConfiguration configuration;
+            configuration = ServerConfiguration.builder().bindAddress(InetAddress.getLocalHost())
+                    .port(8888).build();
+            WebServer ws = WebServer.create(configuration, routing);
+            ws.start();
+        } catch (UnknownHostException ex) {
+            //Logger.getLogger(OrderStore.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+        }
     }
+
+    private static void server(Clothing[] items) {
+        try {
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void average(Clothing[] items) {
+        for (Clothing item : items) {
+            if (item.getSize().equals("L")) {
+                counting++;
+                average = average + item.getPrice();
+            }
+        }
+        try {
+            average = (counting == 0) ? 0 : average / counting;
+//            average = average / counting;
+        } catch (ArithmeticException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Average: " + average);
+
+    }
+
+    private void test() {
+    }
+
 }
