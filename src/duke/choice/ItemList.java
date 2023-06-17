@@ -4,22 +4,23 @@
  */
 package duke.choice;
 
-import io.helidon.common.http.Http;
-import io.helidon.webserver.Handler;
-import io.helidon.webserver.ServerRequest;
-import io.helidon.webserver.ServerResponse;
+//import io.helidon.common.http.Http;
+//import io.helidon.webserver.Handler;
+//import io.helidon.webserver.ServerRequest;
+//import io.helidon.webserver.ServerResponse;
 
 /**
  *
  * @author leo
  */
-public class ItemList implements Handler{
+public class ItemList {
+//	public class ItemList implements Handler{
     String items;
     ItemList(String items) {
         this.items=items;
     }
 
-    
+/*    
     @Override
     public void accept(ServerRequest req, ServerResponse res) {
         res.status(Http.Status.OK_200);
@@ -28,5 +29,6 @@ public class ItemList implements Handler{
         res.send();
         System.out.println("\npaso\n");
     }
-    
+*/
+
 }
