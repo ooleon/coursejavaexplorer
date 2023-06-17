@@ -1,1 +1,1 @@
-A sample based on the Oracle Explorer java Curse, forked for using Spring Boot, Rest.
+A sample based on the Oracle Explorer java course, forked for using Spring Boot, Rest.
