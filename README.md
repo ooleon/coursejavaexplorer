@@ -12,9 +12,8 @@ Run Docker Conteiner
 docker run --name appConteiner17 -p 8080:8080 app17:latest
 ```
 
-$
 	port -p <local> : <container>
-$
+
 
 Endpoints:
  *	Roots	http://localhost:8080/
