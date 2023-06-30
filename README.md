@@ -16,4 +16,5 @@ docker run --name appConteiner17 -p 8080:8080 app17:latest
 
 
 Endpoints:
- *	Roots	http://localhost:8080/
+ *	Roots	[http://localhost:8080/rest/](http://localhost:8080/rest/ "Localhost rest/")
+ 
