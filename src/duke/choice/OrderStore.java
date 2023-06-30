@@ -148,7 +148,7 @@ public class OrderStore {
 	private void test() {
 	}
 
-    @GetMapping("/")
+    @GetMapping("/rest")
     public ResponseEntity<Clothing[]> getClothing() {
     	return ResponseEntity.status(HttpStatus.CREATED).body(c1.getItems());
     }
