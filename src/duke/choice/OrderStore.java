@@ -9,11 +9,6 @@ import duke.choice.Customer;
 import duke.choice.Kikito;
 import java.util.Arrays;
 
-// helidon reference a external micro server, I prefer use SpringBoot
-//import io.helidon.webserver.Routing;
-//import io.helidon.webserver.ServerConfiguration;
-//import io.helidon.webserver.WebServer;
-
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.logging.Level;
@@ -68,7 +63,6 @@ public class OrderStore {
 		Clothing[] items1 = { item1 };
 		Clothing[] items2 = { item2 };
 		Clothing[] items = { item3, item4, item1, item2 };
-//        Clothing[] items = {item1, item2, item3, item4};
 
 		item1.setDescription("Blue Jacket");
 		item1.setPrice(10.9);
@@ -94,30 +88,13 @@ public class OrderStore {
 		c1.listItems();
 		System.out.println();
 		c1.getTotalClothingCost();
-		/*
-		 */
+
 		os.average(items);
 
 		Arrays.sort(c1.getItems());
 
 		c1.listItems();
 
-		/*        
-        try {
-            ItemList list = new ItemList(c1.getItems()[0].toString());
-            Routing routing = Routing.builder()
-                    .get("/items", list).build();
-            ServerConfiguration configuration;
-            configuration = ServerConfiguration.builder().bindAddress(InetAddress.getLocalHost())
-                    .port(8888).build();
-            WebServer ws = WebServer.create(configuration, routing);
-            ws.start();
-        } catch (UnknownHostException ex) {
-            //Logger.getLogger(OrderStore.class.getName()).log(Level.SEVERE, null, ex);
-            ex.printStackTrace();
-        }
-		*/
-		
 	}
 
 	private static void server(Clothing[] items) {
@@ -137,7 +114,6 @@ public class OrderStore {
 		}
 		try {
 			average = (counting == 0) ? 0 : average / counting;
-//            average = average / counting;
 		} catch (ArithmeticException e) {
 			e.printStackTrace();
 		}
